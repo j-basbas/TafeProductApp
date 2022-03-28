@@ -29,18 +29,20 @@ namespace ProductApps
 
         private void calculateButton_Click(object sender, RoutedEventArgs e)
         {
+            decimal abc;
             try
             {
                 cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
-                cProduct.calTotalPayment();
+                abc = cProduct.calTotalPayment();
                 totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
+                totalChargeTextBox.Text = (abc + 25.00m).ToString();
             }
             catch (FormatException)
             {
                 MessageBox.Show("Enter data again", "Data Entry Error");
             }
-        }
 
+        }
         private void clearButton_Click(object sender, RoutedEventArgs e)
         {
             productTextBox.Text = "";
